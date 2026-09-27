@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers and Subscriptions | Bean Boutique</title>
+    <meta name="description" content="Current promotions at Bean Boutique plus three coffee subscription levels with their benefits.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Montserrat:ital,wght@0,300..700;1,300..600&family=Nanum+Gothic:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announce">
+        <ul>
+            <li>Free shipping on orders over $100</li>
+            <li>Roasted every Tuesday</li>
+            <li>Open 7&ndash;18 daily</li>
+        </ul>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="nav-header">
+            <a href="coffee.html" class="search">Search</a>
+            <a href="index.html" class="logo">BEAN BOUTIQUE</a>
+            <a href="cart.html" class="cart">Cart<span class="cart-count" hidden>0</span></a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" aria-label="Main">
+        <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coffee.html">Coffee</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="offers.html" aria-current="page">Offers</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+
+    <header class="page-head">
+        <div class="wrap">
+            <p class="eyebrow">This month</p>
+            <h1>Offers &amp; <span class="accent">subscriptions</span></h1>
+            <p class="lede">Three promotions running now, and a standing order that
+               puts fresh coffee through your door the week it is roasted.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="wrap">
+            <h2 class="visually-hidden">Current promotions</h2>
+
+            <div class="grid grid-3">
+
+                <article class="card">
+                    <div class="card-art">
+                        <img src="images/bag-yellow.jpg" alt="A bag of House Blend coffee">
+                    </div>
+                    <span class="card-tag">Save 20%</span>
+                    <h3>Two bags, one price break</h3>
+                    <p>Any two 250g bags for $25. Mix the roasts however you like.</p>
+                    <div class="card-foot">
+                        <span class="price">$25.00</span>
+                        <a class="btn btn-small btn-quiet" href="coffee.html">Choose beans</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-art">
+                        <img src="images/french-press.jpg" alt="A French press">
+                    </div>
+                    <span class="card-tag">Bundle</span>
+                    <h3>First brewing kit</h3>
+                    <p>A French press and a bag of House Blend, together
+                       for less than the parts.</p>
+                    <div class="card-foot">
+                        <span class="price">$48.00</span>
+                        <a class="btn btn-small btn-quiet" href="equipment.html">See the kit</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-art">
+                        <img src="images/mug-character.png" alt="A refilled mug of coffee">
+                    </div>
+                    <span class="card-tag">In store</span>
+                    <h3>Refill Wednesdays</h3>
+                    <p>Bring your own cup on a Wednesday and take a dollar off
+                       whatever you order.</p>
+                    <div class="card-foot">
+                        <span class="price">&minus;$1.00</span>
+                        <a class="btn btn-small btn-quiet" href="event.html">Find us</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section">
+        <div class="wrap">
+            <div class="center">
+                <p class="eyebrow">Standing order</p>
+                <h2>Subscription <span class="accent">levels</span></h2>
+                <p class="lede">Every level ships the week we roast, and every one
+                   can be paused or cancelled from your account.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <article class="card">
+                    <h3>The Taster</h3>
+                    <p class="price">$12.00 <span>every month</span></p>
+                    <ul>
+                        <li>One 250g bag</li>
+                        <li>Rotating single origin</li>
+                        <li>Free delivery</li>
+                        <li>Pause any time</li>
+                    </ul>
+                    <div class="card-foot">
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="plan-0" data-name="The Taster subscription"
+                                data-price="12.00" data-img="images/bag-yellow.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <span class="card-badge">Most popular</span>
+                    <h3>The Regular</h3>
+                    <p class="price">$28.00 <span>every month</span></p>
+                    <ul>
+                        <li>Two 250g bags</li>
+                        <li>Choose your roast level</li>
+                        <li>Free delivery</li>
+                        <li>10% off all equipment</li>
+                    </ul>
+                    <div class="card-foot">
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="plan-1" data-name="The Regular subscription"
+                                data-price="28.00" data-img="images/bag-yellow.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>The Roastery</h3>
+                    <p class="price">$52.00 <span>every month</span></p>
+                    <ul>
+                        <li>Four 250g bags</li>
+                        <li>First call on rare lots</li>
+                        <li>Free next day delivery</li>
+                        <li>Two free workshop seats</li>
+                    </ul>
+                    <div class="card-foot">
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="plan-2" data-name="The Roastery subscription"
+                                data-price="52.00" data-img="images/bag-yellow.jpg">Add to basket</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <span class="logo">BEAN BOUTIQUE</span>
+                    <p>A small roastery and coffee bar. Single origin beans,
+                       roasted in eight kilo batches, poured with care.</p>
+                    <div class="footer-social">
+                        <a href="#">Instagram</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Pinterest</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a href="coffee.html">Coffee</a></li>
+                        <li><a href="equipment.html">Equipment</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="cart.html">Basket</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Visit</h2>
+                    <ul>
+                        <li>Yangon</li>
+                        <li>Myanmar</li>
+                        <li>Open 7&ndash;18 daily</li>
+                        <li><a href="event.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:vv4mp6re@gmail.com">vv4mp6re@gmail.com</a></li>
+                        <li><a href="tel:+1122334455">+1 122 334 455</a></li>
+                        <li><a href="event.html">Book a workshop</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-base">
+                <span>&copy; 2026 Bean Boutique</span>
+                <span>Roasted in Yangon &middot; Brewed everywhere</span>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

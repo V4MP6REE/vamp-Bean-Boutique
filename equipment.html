@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewing Equipment | Bean Boutique</title>
+    <meta name="description" content="Brewing equipment sold by Bean Boutique, with detailed descriptions and usage tips for every piece of kit.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Montserrat:ital,wght@0,300..700;1,300..600&family=Nanum+Gothic:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announce">
+        <ul>
+            <li>Free shipping on orders over $100</li>
+            <li>Roasted every Tuesday</li>
+            <li>Open 7&ndash;18 daily</li>
+        </ul>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="nav-header">
+            <a href="coffee.html" class="search">Search</a>
+            <a href="index.html" class="logo">BEAN BOUTIQUE</a>
+            <a href="cart.html" class="cart">Cart<span class="cart-count" hidden>0</span></a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" aria-label="Main">
+        <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coffee.html">Coffee</a></li>
+                <li><a href="equipment.html" aria-current="page">Equipment</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="offers.html">Offers</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+
+    <header class="page-head">
+        <div class="wrap">
+            <p class="eyebrow">The workshop</p>
+            <h1>Brewing <span class="accent">equipment</span></h1>
+            <p class="lede">Everything on this page is used behind our own bar.
+               Open the usage tips on any item for the recipe we brew it with.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="wrap">
+
+            <h2 class="visually-hidden">Brewing equipment catalogue</h2>
+
+            <div class="search-tool">
+                <label class="visually-hidden" for="site-search">Search brewing equipment</label>
+                <div class="search-box">
+                    <img class="search-icon" src="images/icon-search.png" alt="">
+                    <input type="search" id="site-search" placeholder=" " autocomplete="off">
+                    <span class="search-hint" aria-hidden="true">
+                        <span class="search-words">
+                    <span class="hint-1">chemex</span>
+                    <span class="hint-2">grinder</span>
+                    <span class="hint-3">pour over</span>
+                        </span>
+                        <span class="search-caret"></span>
+                    </span>
+                </div>
+                <p class="search-count" id="search-count" role="status" aria-live="polite"></p>
+            </div>
+
+            <div class="grid grid-equipment">
+                <article class="card" data-search="Cezve A long-handled copper pot for Turkish coffee. The grounds go in with the water and stay there, giving a thick, unfiltered cup. brewing equipment">
+                    <div class="card-art">
+                        <img src="images/cezve.jpg" alt="Cezve">
+                    </div>
+                    <h3>Cezve</h3>
+                    <p>A long-handled copper pot for Turkish coffee. The grounds go in with the water and stay there, giving a thick, unfiltered cup.</p>
+                    <details>
+                        <summary>Usage tips</summary>
+                        <p>Grind finer than espresso, almost to a powder. One heaped teaspoon per 60&nbsp;g of cold water, heated slowly. Lift it off the moment the foam climbs the neck &mdash; if it boils, the crema is gone.</p>
+                    </details>
+                    <div class="card-foot">
+                        <span class="price">$28.00</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="cezve" data-name="Cezve"
+                                data-price="28.00" data-img="images/cezve.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Espresso Machine A single group home machine with a 58 mm portafilter and a steam wand. The same pressure profile we pull behind the bar. brewing equipment">
+                    <div class="card-art">
+                        <img src="images/espresso-machine.jpg" alt="Espresso Machine">
+                    </div>
+                    <h3>Espresso Machine</h3>
+                    <p>A single group home machine with a 58&nbsp;mm portafilter and a steam wand. The same pressure profile we pull behind the bar.</p>
+                    <details>
+                        <summary>Usage tips</summary>
+                        <p>Flush the group before every shot and keep the basket dry. Aim for 18&nbsp;g in and 36&nbsp;g out in 27 to 32 seconds; if it runs fast, grind finer rather than tamping harder.</p>
+                    </details>
+                    <div class="card-foot">
+                        <span class="price">$420.00</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="espresso-machine" data-name="Espresso Machine"
+                                data-price="420.00" data-img="images/espresso-machine.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="French Press Eight cup borosilicate press with a stainless steel mesh. The simplest way to a full, heavy cup. brewing equipment">
+                    <div class="card-art">
+                        <img src="images/french-press.jpg" alt="French Press">
+                    </div>
+                    <h3>French Press</h3>
+                    <p>Eight cup borosilicate press with a stainless steel mesh. The simplest way to a full, heavy cup.</p>
+                    <details>
+                        <summary>Usage tips</summary>
+                        <p>Coarse grind only, or you will taste silt. Steep four minutes, break the crust, skim the foam, then press slowly and decant straight away.</p>
+                    </details>
+                    <div class="card-foot">
+                        <span class="price">$38.00</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="french-press" data-name="French Press"
+                                data-price="38.00" data-img="images/french-press.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Moka Pot A six cup aluminium stovetop pot. Strong, concentrated coffee with none of the electricity. brewing equipment">
+                    <div class="card-art">
+                        <img src="images/moka-pot.jpg" alt="Moka Pot">
+                    </div>
+                    <h3>Moka Pot</h3>
+                    <p>A six cup aluminium stovetop pot. Strong, concentrated coffee with none of the electricity.</p>
+                    <details>
+                        <summary>Usage tips</summary>
+                        <p>Fill the base to just below the valve with water off the boil, level the basket without tamping, and lift it off the heat the moment it starts to gurgle.</p>
+                    </details>
+                    <div class="card-foot">
+                        <span class="price">$46.00</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="moka-pot" data-name="Moka Pot"
+                                data-price="46.00" data-img="images/moka-pot.jpg">Add to basket</button>
+                    </div>
+                </article>
+            </div>
+
+            <p class="search-empty" id="search-empty" hidden>
+                Nothing matches that search. Try &ldquo;press&rdquo;, &ldquo;kettle&rdquo; or &ldquo;grinder&rdquo;.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <span class="logo">BEAN BOUTIQUE</span>
+                    <p>A small roastery and coffee bar. Single origin beans,
+                       roasted in eight kilo batches, poured with care.</p>
+                    <div class="footer-social">
+                        <a href="#">Instagram</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Pinterest</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a href="coffee.html">Coffee</a></li>
+                        <li><a href="equipment.html">Equipment</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="cart.html">Basket</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Visit</h2>
+                    <ul>
+                        <li>Yangon</li>
+                        <li>Myanmar</li>
+                        <li>Open 7&ndash;18 daily</li>
+                        <li><a href="event.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:vv4mp6re@gmail.com">vv4mp6re@gmail.com</a></li>
+                        <li><a href="tel:+1122334455">+1 122 334 455</a></li>
+                        <li><a href="event.html">Book a workshop</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-base">
+                <span>&copy; 2026 Bean Boutique</span>
+                <span>Roasted in Yangon &middot; Brewed everywhere</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

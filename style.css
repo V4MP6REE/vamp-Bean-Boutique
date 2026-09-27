@@ -1,0 +1,1646 @@
+/* =====================================================================
+   BEAN BOUTIQUE - site stylesheet
+   All styling for every page lives here. No <style> elements and no
+   style="" attributes are used anywhere in the HTML.
+
+   CONTENTS
+   01 Design tokens          08 Cards + boxes
+   02 Base + reset           09 Animated search
+   03 Layout helpers         10 Forms
+   04 Announcement bar       11 Shopping cart
+   05 Header + navbar        12 Slideshow
+   06 Hero                   13 Footer
+   07 Sections               14 Responsive + motion
+   ===================================================================== */
+
+
+/* ---------- 01 Design tokens ---------------------------------------- */
+
+:root{
+    --dark:   #664848;
+    --darker: #3c1414;
+    --white:  #f2e0d6;
+    --pink:   #c09e9d;
+
+    --radius:     14px;
+    --radius-lg:  22px;
+
+    /* a flat 1px outline drawn with box-shadow instead of border:
+       no depth, but it animates smoothly and keeps box-shadow in use */
+    --hairline:      inset 0 0 0 1px var(--pink);
+    --hairline-dark: inset 0 0 0 1px var(--darker);
+
+    /* type */
+    --display: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono:    'Cutive Mono', ui-monospace, 'Courier New', monospace;
+    --sans:    'Nanum Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --wide:    'Syncopate', 'Montserrat', Arial, sans-serif;
+
+    --gutter: 26px;
+    --measure: 1180px;
+}
+
+
+/* ---------- 02 Base + reset ----------------------------------------- */
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+html{
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    /* A column flex box does two jobs at once: it stops child margins
+       collapsing out (which is what keeps the sticky navbar pinned all
+       the way down), and it lets the footer sit at the bottom on short
+       pages such as an empty basket. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--white);
+    color: var(--darker);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+/* the hidden attribute must win over any display rule set below,
+   otherwise elements JavaScript hides would stay on screen */
+[hidden]{
+    display: none !important;
+}
+
+/* flex items must not be squashed on short screens */
+body > *{
+    flex-shrink: 0;
+}
+
+.site-footer{
+    margin-top: auto;
+}
+
+a{
+    color: var(--darker);
+}
+
+h1, h2, h3, h4{
+    font-family: var(--display);
+    font-weight: 400;
+    line-height: 1.16;
+    margin: 0 0 0.45em;
+    letter-spacing: -0.015em;
+}
+
+/* the big two run light, which suits Montserrat at display sizes */
+h1, h2{ font-weight: 300; }
+
+h1{ font-size: clamp(38px, 5.4vw, 74px); }
+h2{ font-size: clamp(30px, 3.9vw, 52px); }
+h3{ font-size: clamp(20px, 1.9vw, 27px); }
+
+p{ margin: 0 0 1.1em; }
+
+/* keyboard users always get a visible focus ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible{
+    outline: 2px solid var(--dark);
+    outline-offset: 3px;
+}
+
+
+/* ---------- 03 Layout helpers --------------------------------------- */
+
+.wrap{
+    width: 100%;
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.wrap-narrow{
+    max-width: 760px;
+}
+
+.section{
+    padding: clamp(56px, 8vw, 110px) 0;
+}
+
+.section-tight{
+    padding: clamp(36px, 5vw, 64px) 0;
+}
+
+/* small letterspaced label, used above headings */
+.eyebrow{
+    font-family: var(--wide);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin: 0 0 14px;
+}
+
+.lede{
+    font-size: clamp(17px, 1.35vw, 20px);
+    color: var(--dark);
+    max-width: 56ch;
+}
+
+.center{ text-align: center; }
+.center .lede{ margin-left: auto; margin-right: auto; }
+
+.rule{
+    border: 0;
+    border-top: 1px solid var(--pink);
+    margin: 0;
+}
+
+/* an italic accent word, like the reference posters */
+.accent{
+    font-family: var(--display);
+    font-style: italic;
+}
+
+/* screen-reader-only, for labels that shouldn't show visually */
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+
+/* ---------- 04 Announcement bar ------------------------------------- */
+
+.announce{
+    background-color: var(--darker);
+    color: var(--white);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    padding: 9px 0;
+    overflow: hidden;
+}
+
+.announce ul{
+    display: flex;
+    justify-content: center;
+    gap: 46px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.announce li{ white-space: nowrap; }
+
+
+/* ---------- 05 Header + navbar -------------------------------------- */
+
+.site-header{
+    background-color: var(--white);
+    border-bottom: 1px solid var(--pink);
+}
+
+.nav-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 22px var(--gutter);
+}
+
+.nav-header a{
+    text-decoration: none;
+}
+
+.logo{
+    font-family: var(--mono);
+    font-size: clamp(26px, 4.4vw, 54px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.search,
+.cart{
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.search:hover,
+.cart:hover{
+    color: var(--dark);
+    border-bottom-color: var(--dark);
+}
+
+/* --- sticky navigation bar --- */
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--white);
+    border-top: 1px solid var(--darker);
+    border-bottom: 1px solid var(--darker);
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(18px, 5vw, 76px);
+    list-style: none;
+    margin: 0 auto;
+    padding: 11px var(--gutter);
+    max-width: var(--measure);
+}
+
+.nav-links a{
+    position: relative;
+    display: block;
+    padding: 6px 2px;
+    text-decoration: none;
+    font-family: var(--wide);
+    font-size: 10px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+/* hover underline grows out from the middle of the tab */
+.nav-links a::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--dark);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible{
+    color: var(--dark);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after{
+    width: 100%;
+}
+
+/* the tab for the page you are already on */
+.nav-links a[aria-current="page"]{
+    color: var(--dark);
+}
+
+.nav-links a[aria-current="page"]::after{
+    width: 100%;
+    background-color: var(--dark);
+}
+
+
+/* ---------- 06 Hero -------------------------------------------------- */
+
+.hero{
+    position: relative;
+    background-image: url(images/hb3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    /* Reserve the picture's height. padding-top is the fallback that works
+       everywhere (Safari < 15 has no aspect-ratio); 1557/3331 = 46.75%. */
+    padding-top: 46.75%;
+}
+
+/* browsers that understand aspect-ratio use it instead - same result,
+   but it survives any later change to the box model */
+@supports (aspect-ratio: 1 / 1){
+    .hero{
+        padding-top: 0;
+        aspect-ratio: 3331 / 1557;
+    }
+}
+
+/* text sits on the image; % keeps it locked as the image scales */
+.hero-content{
+    position: absolute;
+    left: 6%;
+    top: 8%;
+    width: 34%;
+}
+
+.hero h1{
+    font-family: var(--display);
+    font-size: clamp(19px, 3.4vw, 58px);
+    line-height: 1.1;
+    margin: 0 0 0.4em;
+}
+
+.hero p{
+    font-size: clamp(10px, 1.08vw, 18px);
+    line-height: 1.5;
+    margin: 0 0 1.6em;
+    color: var(--dark);
+}
+
+/* page banner used on the inner pages instead of the big hero */
+.page-head{
+    background-color: var(--white);
+    border-bottom: 1px solid var(--pink);
+    padding: clamp(46px, 7vw, 92px) 0;
+    text-align: center;
+}
+
+.page-head h1{
+    margin-bottom: 0.25em;
+}
+
+.page-head .lede{
+    margin: 0 auto;
+}
+
+
+/* ---------- 07 Sections ---------------------------------------------- */
+
+/* thin repeating strip, like the reference site's "SINCE 1810" rule */
+.strip{
+    background-color: var(--pink);
+    border-top: 1px solid var(--pink);
+    border-bottom: 1px solid var(--pink);
+    padding: 11px 0;
+    overflow: hidden;
+}
+
+.strip ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--gutter);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--dark);
+}
+
+.strip li{ white-space: nowrap; }
+
+/* two colour blocks side by side */
+.split{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.split-text{
+    padding: clamp(40px, 6vw, 92px) clamp(26px, 5vw, 76px);
+    background-color: var(--pink);
+}
+
+.split-art{
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(30px, 4vw, 60px);
+    background-color: var(--pink);
+}
+
+.split-art img{
+    width: min(240px, 70%);
+    height: auto;
+}
+
+/* image on one side, words on the other */
+.feature{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+}
+
+.feature-art{
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 3vw, 44px);
+}
+
+/* a plain statement band: centred words on a slightly deeper paper,
+   thin rules above and below, no image */
+.features{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(64px, 9vw, 120px) var(--gutter);
+    background-color: var(--white);
+    border-top: 1px solid var(--pink);
+    border-bottom: 1px solid var(--pink);
+}
+
+.features p{
+    max-width: 52ch;
+    color: var(--dark);
+}
+
+
+/* ---------- 08 Cards + boxes ----------------------------------------- */
+
+.grid{
+    display: grid;
+    gap: clamp(18px, 2.4vw, 30px);
+}
+
+.grid-2{ grid-template-columns: repeat(2, 1fr); }
+
+/* the equipment page carries four items, so it reads better two-up.
+   Scoped above the phone breakpoint so the mobile rules still win below it. */
+@media (min-width: 561px){
+    .grid-equipment{ grid-template-columns: repeat(2, 1fr); }
+
+    .grid-equipment .card-art img{
+        max-height: 300px;
+        width: auto;
+        margin: 0 auto;
+    }
+}
+.grid-3{ grid-template-columns: repeat(3, 1fr); }
+.grid-4{ grid-template-columns: repeat(4, 1fr); }
+
+/* the boxes: border-radius, a box-shadow hairline, and a quiet hover
+   where the outline darkens - no lift, no drop shadow */
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--hairline);
+    padding: 22px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover,
+.card:focus-within{
+    box-shadow: var(--hairline-dark);
+}
+
+.card-art{
+    background-color: var(--white);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+/* Pictures come in different proportions, which pushed card titles out of
+   line with each other. A fixed box with the image centred inside keeps every
+   card in a row the same shape. Equipment has its own rule, so it's excluded. */
+.grid-3 .card-art{
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-3 .card-art img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+}
+
+.card-art img{
+    width: 100%;
+    height: auto;
+}
+
+.card h3{
+    margin-bottom: 6px;
+}
+
+.card p{
+    color: var(--dark);
+    font-size: 15.5px;
+    margin-bottom: 14px;
+}
+
+.card-tag{
+    align-self: flex-start;
+    font-family: var(--wide);
+    font-size: 8.5px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--darker);
+    background-color: var(--pink);
+    border-radius: 999px;
+    padding: 4px 11px;
+    margin-bottom: 12px;
+}
+
+/* corner badge, so a flagged card still lines up with its neighbours */
+.card-badge{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    background-color: var(--dark);
+    border-radius: 999px;
+    padding: 4px 11px;
+}
+
+.card-foot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--pink);
+}
+
+.price{
+    font-family: var(--mono);
+    font-size: 15px;
+}
+
+/* small round icon boxes, used for the "what makes us" row */
+.pill-row{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    text-align: center;
+}
+
+.pill{
+    background-color: var(--white);
+    border-radius: var(--radius);
+    padding: 22px 14px;
+    box-shadow: var(--hairline);
+    transition: box-shadow 0.3s ease;
+}
+
+.pill:hover{
+    box-shadow: var(--hairline-dark);
+}
+
+.pill-icon{
+    width: 26px;
+    height: 26px;
+    margin: 0 auto 10px;
+}
+
+.pill h3{
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.pill p{
+    font-size: 13.5px;
+    color: var(--dark);
+    margin: 0;
+}
+
+/* buttons */
+.btn,
+.coffee-btn{
+    display: inline-block;
+    font-family: var(--wide);
+    font-size: clamp(9px, 0.85vw, 11px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.85em 1.7em;
+    border: 1px solid var(--darker);
+    border-radius: 999px;
+    background-color: var(--pink);
+    color: var(--darker);
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn:hover,
+.coffee-btn:hover{
+    background-color: var(--darker);
+    color: var(--white);
+}
+
+.btn-quiet{
+    background-color: transparent;
+}
+
+.btn-small{
+    padding: 0.6em 1.2em;
+    font-size: 10px;
+}
+
+
+/* benefit lists inside the subscription cards */
+.card ul{
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+}
+
+.card li{
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    font-size: 15.5px;
+    color: var(--dark);
+}
+
+.card li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--pink);
+}
+
+.card .price span{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--dark);
+}
+
+/* the "usage tips" drawer on the equipment cards - no JavaScript needed */
+.card details{
+    border-top: 1px solid var(--pink);
+    margin-bottom: 14px;
+    padding-top: 12px;
+}
+
+.card summary{
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark);
+    list-style: none;
+    transition: color 0.25s ease;
+}
+
+/* both of these are needed: the ::marker rule covers Firefox,
+   the -webkit- one covers older Safari */
+.card summary::marker{ content: ""; }
+.card summary::-webkit-details-marker{ display: none; }
+
+.card summary::after{
+    content: " +";
+    font-family: var(--mono);
+}
+
+.card details[open] summary::after{
+    content: " \2212";
+}
+
+.card summary:hover{
+    color: var(--darker);
+}
+
+.card details p{
+    margin: 10px 0 0;
+    font-size: 14.5px;
+}
+
+/* ---------- 09 Animated search --------------------------------------- */
+
+.search-tool{
+    max-width: 620px;
+    margin: 0 auto clamp(30px, 4vw, 52px);
+}
+
+.search-box{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    border-radius: 999px;
+    padding: 12px 22px;
+    transition: border-color 0.3s ease;
+}
+
+.search-box:focus-within{
+    border-color: var(--darker);
+}
+
+.search-icon{
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+}
+
+.search-box input{
+    flex: 1;
+    border: 0;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--darker);
+    padding: 4px 0;
+}
+
+.search-box input:focus{
+    outline: none;
+}
+
+/* the animated bit: a hint word and a blinking caret cycle while the
+   box is empty, and both vanish the moment the field is used */
+.search-hint{
+    position: absolute;
+    left: 54px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    pointer-events: none;
+    color: var(--dark);
+    font-size: 16px;
+    transition: opacity 0.25s ease;
+}
+
+.search-box input:not(:placeholder-shown) ~ .search-hint,
+.search-box input:focus ~ .search-hint{
+    opacity: 0;
+}
+
+.search-words{
+    position: relative;
+    display: inline-block;
+    min-width: 132px;
+    height: 1.5em;
+}
+
+.search-words span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    white-space: nowrap;
+    animation: hintCycle 9s infinite;
+}
+
+/* scoped with two classes so these beat the `animation` shorthand
+   on `.search-words span`, which would otherwise reset the delay */
+.search-words .hint-1{ animation-delay: 0s; }
+.search-words .hint-2{ animation-delay: 3s; }
+.search-words .hint-3{ animation-delay: 6s; }
+
+@keyframes hintCycle{
+    0%   { opacity: 0; transform: translateY(8px); }
+    2%   { opacity: 1; transform: translateY(0); }
+    31%  { opacity: 1; transform: translateY(0); }
+    36%  { opacity: 0; transform: translateY(-8px); }
+    100% { opacity: 0; transform: translateY(-8px); }
+}
+
+.search-caret{
+    width: 1.5px;
+    height: 18px;
+    background-color: var(--dark);
+    animation: caretBlink 1.1s steps(1) infinite;
+}
+
+@keyframes caretBlink{
+    0%, 50%      { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
+.search-count{
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin: 14px 0 0;
+    min-height: 1.4em;
+}
+
+/* cards animate out when they don't match the search */
+.is-hidden{
+    display: none;
+}
+
+.is-shown{
+    animation: cardIn 0.45s ease both;
+}
+
+@keyframes cardIn{
+    from{ opacity: 0; transform: translateY(14px); }
+    to  { opacity: 1; transform: translateY(0); }
+}
+
+.search-empty{
+    text-align: center;
+    color: var(--dark);
+    padding: 40px 0;
+}
+
+
+/* ---------- 10 Forms -------------------------------------------------- */
+
+.form-card{
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    border-radius: var(--radius-lg);
+    padding: clamp(24px, 4vw, 48px);
+}
+
+.field-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.field label{
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 7px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--darker);
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    transition: border-color 0.25s ease;
+}
+
+/* focus is a strong light-to-dark change in the line, not a glow */
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    outline: none;
+    border-color: var(--darker);
+}
+
+.field input:invalid:not(:placeholder-shown){
+    border-color: var(--dark);
+}
+
+.form-note{
+    font-size: 13px;
+    color: var(--dark);
+    margin: 14px 0 0;
+}
+
+
+/* ---------- 11 Shopping cart ------------------------------------------ */
+
+.cart-layout{
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: start;
+}
+
+.cart-table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.cart-table caption{
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    padding-bottom: 12px;
+}
+
+.cart-table th,
+.cart-table td{
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--pink);
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.cart-table th{
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background-color: var(--white);
+}
+
+.cart-table tr:last-child td{
+    border-bottom: 0;
+}
+
+.cart-table img{
+    width: 52px;
+    border-radius: 8px;
+    background-color: var(--white);
+}
+
+.cart-item{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.qty{
+    width: 62px;
+    font-family: var(--sans);
+    font-size: 15px;
+    text-align: center;
+    color: var(--darker);
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.link-remove{
+    background: none;
+    border: 0;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.25s ease;
+}
+
+.link-remove:hover{
+    color: var(--darker);
+}
+
+.summary{
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    border-radius: var(--radius-lg);
+    padding: 26px;
+    position: sticky;
+    top: 78px;
+}
+
+/* the basket sidebar heading moved from h3 to h2 for a valid outline,
+   so keep it at the old h3 size rather than the full h2 size */
+.summary h2{
+    font-size: clamp(20px, 1.9vw, 27px);
+}
+
+.summary-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 9px 0;
+    font-size: 15px;
+}
+
+.summary-total{
+    border-top: 1px solid var(--pink);
+    margin-top: 8px;
+    padding-top: 14px;
+    font-family: var(--mono);
+    font-size: 19px;
+}
+
+/* shown after checkout, in place of the basket */
+.cart-done{
+    text-align: center;
+    max-width: 52ch;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.cart-done p{
+    color: var(--dark);
+}
+
+.cart-done:focus{
+    outline: none;
+}
+
+.cart-empty{
+    text-align: center;
+    padding: 40px 0;
+    color: var(--dark);
+}
+
+/* little count bubble on the CART link in the header */
+.cart-count{
+    display: inline-block;
+    min-width: 19px;
+    padding: 0 5px;
+    margin-left: 5px;
+    border-radius: 999px;
+    background-color: var(--dark);
+    color: var(--white);
+    font-size: 10px;
+    line-height: 19px;
+    text-align: center;
+}
+
+
+/* ---------- 12 Slideshow ---------------------------------------------- */
+
+.slideshow{
+    position: relative;
+    max-width: 1100px;
+    height: 440px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.slide-radio{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* The radios are hidden, so a keyboard user focusing one would otherwise get
+   no feedback at all. Show the ring on the dot that radio controls. */
+#slide-1:focus ~ .slide-dots .dot-1,
+#slide-2:focus ~ .slide-dots .dot-2,
+#slide-3:focus ~ .slide-dots .dot-3{
+    outline: 2px solid var(--darker);
+    outline-offset: 5px;
+}
+
+.slides{
+    position: absolute;
+    inset: 0;
+}
+
+.slide{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+    padding: 44px 62px;
+    background-color: var(--slide-bg);
+    color: var(--darker);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.04);
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
+    animation: slideCycle 18s infinite;
+}
+
+/* the tones live here, never in a style attribute on the HTML */
+.slide-1,
+.slide-2,
+.slide-3{ --slide-bg: var(--white); }
+
+.slide:nth-child(1){ animation-delay: 0s; }
+.slide:nth-child(2){ animation-delay: 6s; }
+.slide:nth-child(3){ animation-delay: 12s; }
+
+@keyframes slideCycle{
+    0%     { opacity: 0; visibility: hidden;  transform: scale(1.04); }
+    2%     { opacity: 1; visibility: visible; transform: scale(1); }
+    31%    { opacity: 1; visibility: visible; transform: scale(1); }
+    33.33% { opacity: 0; visibility: hidden;  transform: scale(1.04); }
+    100%   { opacity: 0; visibility: hidden;  transform: scale(1.04); }
+}
+
+/* once a dot or arrow is clicked the reel stops on the chosen slide */
+.slide-radio:checked ~ .slides .slide{
+    animation: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.04);
+}
+
+#slide-1:checked ~ .slides .slide:nth-child(1),
+#slide-2:checked ~ .slides .slide:nth-child(2),
+#slide-3:checked ~ .slides .slide:nth-child(3){
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.slide-art{
+    flex: 0 0 auto;
+    width: 240px;
+}
+
+.slide-copy{
+    max-width: 420px;
+}
+
+.slide-tag{
+    margin: 0 0 8px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dark);
+}
+
+.slide h2{
+    font-size: clamp(28px, 3.4vw, 44px);
+    margin-bottom: 12px;
+}
+
+.slide p{
+    color: var(--dark);
+    font-size: 15.5px;
+}
+
+.slide-price{
+    font-family: var(--mono);
+    font-size: 15px;
+    letter-spacing: 0.06em;
+}
+
+.arrows{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s;
+    animation: fadeCycle 18s infinite;
+}
+
+.arrows-1{ animation-delay: 0s; }
+.arrows-2{ animation-delay: 6s; }
+.arrows-3{ animation-delay: 12s; }
+
+@keyframes fadeCycle{
+    0%     { opacity: 0; visibility: hidden; }
+    2%     { opacity: 1; visibility: visible; }
+    31%    { opacity: 1; visibility: visible; }
+    33.33% { opacity: 0; visibility: hidden; }
+    100%   { opacity: 0; visibility: hidden; }
+}
+
+.slide-radio:checked ~ .arrows{
+    animation: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#slide-1:checked ~ .arrows-1,
+#slide-2:checked ~ .arrows-2,
+#slide-3:checked ~ .arrows-3{
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    color: var(--darker);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background-color 0.25s ease;
+}
+
+.slide-nav:hover{
+    background-color: var(--white);
+}
+
+.slide-nav.prev{ left: 18px; }
+.slide-nav.next{ right: 18px; }
+
+.slide-dots{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--pink);
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+    animation: dotCycle 18s infinite;
+}
+
+.dot-1{ animation-delay: 0s; }
+.dot-2{ animation-delay: 6s; }
+.dot-3{ animation-delay: 12s; }
+
+@keyframes dotCycle{
+    0%     { background-color: var(--pink); transform: scale(1); }
+    2%     { background-color: var(--darker); transform: scale(1.35); }
+    31%    { background-color: var(--darker); transform: scale(1.35); }
+    33.33% { background-color: var(--pink); transform: scale(1); }
+    100%   { background-color: var(--pink); transform: scale(1); }
+}
+
+.slide-radio:checked ~ .slide-dots .dot{
+    animation: none;
+    background-color: var(--pink);
+    transform: scale(1);
+}
+
+#slide-1:checked ~ .slide-dots .dot-1,
+#slide-2:checked ~ .slide-dots .dot-2,
+#slide-3:checked ~ .slide-dots .dot-3{
+    background-color: var(--darker);
+    transform: scale(1.35);
+}
+
+
+/* ---------- 13 Footer -------------------------------------------------- */
+
+.site-footer{
+    background-color: var(--darker);
+    color: var(--white);
+    padding: clamp(48px, 6vw, 84px) 0 28px;
+}
+
+.site-footer a{
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.site-footer a:hover{
+    color: var(--pink);
+}
+
+.footer-grid{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: clamp(24px, 4vw, 52px);
+}
+
+.footer-brand .logo{
+    font-size: 30px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.footer-brand p{
+    color: var(--pink);
+    font-size: 15px;
+    max-width: 34ch;
+}
+
+.site-footer h2{
+    font-family: var(--wide);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 14px;
+}
+
+.site-footer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer li{
+    margin-bottom: 9px;
+    font-size: 15px;
+}
+
+.footer-social{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+    font-family: var(--wide);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.footer-base{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: clamp(32px, 4vw, 56px);
+    padding-top: 20px;
+    border-top: 1px solid var(--dark);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--pink);
+}
+
+
+/* ---------- 14 Responsive + motion ------------------------------------- */
+
+/* ---- tablet ---- */
+@media (max-width: 900px){
+    .grid-4{ grid-template-columns: repeat(2, 1fr); }
+    .grid-3{ grid-template-columns: repeat(2, 1fr); }
+    .pill-row{ grid-template-columns: repeat(3, 1fr); }
+    .footer-grid{ grid-template-columns: 1fr 1fr; }
+
+    .split{ grid-template-columns: 1fr; }
+    .split-art{ order: -1; padding: 40px; }
+    .split-art img{ width: min(190px, 50%); }
+
+    .feature{ grid-template-columns: 1fr; }
+    .cart-layout{ grid-template-columns: 1fr; }
+    .summary{ position: static; }
+
+    .slideshow{ height: auto; }
+
+    .slide{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 30px 60px;
+        gap: 20px;
+        position: relative;
+    }
+
+    /* stacked slides need the reel to hold one slide's height */
+    .slides{ position: relative; inset: auto; }
+    .slide:not(:first-child){ position: absolute; inset: 0; }
+
+    .slide-art{ width: 150px; }
+}
+
+/* ---- the hero image is too wide to carry text on a phone, so the
+       words move underneath it and the picture keeps its own row ---- */
+@media (max-width: 760px){
+    .hero{
+        aspect-ratio: auto;
+        min-height: 0;
+        padding-top: 46.75%;          /* 1557/3331 - exactly holds the picture */
+        background-size: 100% auto;
+        background-position: top center;
+    }
+
+    .hero-content{
+        position: static;
+        width: auto;
+        padding: 26px var(--gutter) 34px;
+        text-align: center;
+        background-color: var(--white);
+    }
+
+    .hero h1{ font-size: clamp(28px, 8vw, 40px); }
+    .hero p{ font-size: 15px; }
+
+    .announce ul{ gap: 22px; font-size: 10px; }
+    .announce li:nth-child(n+3){ display: none; }
+
+    .strip ul{ justify-content: flex-start; gap: 30px; }
+    .strip li:nth-child(n+4){ display: none; }
+
+    .nav-header{ padding: 16px var(--gutter); }
+    .field-row{ grid-template-columns: 1fr; }
+}
+
+/* ---- phone ---- */
+@media (max-width: 560px){
+    body{ font-size: 16px; }
+    :root{ --gutter: 18px; }
+
+    .grid-4,
+    .grid-3,
+    .grid-2{ grid-template-columns: 1fr; }
+
+    .pill-row{ grid-template-columns: 1fr 1fr; }
+    .footer-grid{ grid-template-columns: 1fr; }
+
+    .nav-links{ gap: 14px; padding: 10px var(--gutter); }
+    .nav-links a{ font-size: 10px; }
+
+    /* only one notice fits across a phone without being clipped */
+    .announce li:nth-child(n+2){ display: none; }
+    .announce ul{ gap: 0; }
+
+    .nav-header{
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo{ order: -1; width: 100%; text-align: center; }
+
+    .cart-table thead{ display: none; }
+
+    .cart-table,
+    .cart-table tbody,
+    .cart-table tr,
+    .cart-table td{
+        display: block;
+        width: 100%;
+    }
+
+    .cart-table tr{
+        border-bottom: 1px solid var(--pink);
+        padding: 6px 0;
+    }
+
+    .cart-table td{
+        border: 0;
+        padding: 6px 16px;
+    }
+
+    /* once the table is display:block the caption shrinks to fit and
+       wraps one word per line, so give it the full width back */
+    .cart-table caption{
+        display: block;
+        width: 100%;
+        padding: 14px 16px 8px;
+    }
+
+    /* the column heading comes back as a label beside each value */
+    .cart-table td[data-label]::before{
+        content: attr(data-label);
+        display: inline-block;
+        min-width: 92px;
+        font-size: 10.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--dark);
+    }
+
+    .search-hint{ left: 46px; font-size: 15px; }
+
+    /* ---- tighter page furniture, so content starts sooner ---- */
+    .announce{ padding: 7px 0; font-size: 9.5px; }
+    .nav-header{ padding: 12px var(--gutter) 8px; gap: 4px 26px; }
+    .logo{ font-size: 23px; }
+    .nav-links{ padding: 2px var(--gutter); gap: 11px; }
+    .page-head{ padding: 34px 0; }
+    .section{ padding: 44px 0; }
+
+    /* the statement band should hug its words rather than fill the screen */
+    .features{ min-height: 0; padding: 48px var(--gutter); }
+
+    /* ---- 44px minimum touch targets ---- */
+    .nav-links a{
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 3px;
+    }
+
+    .search,
+    .cart{
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .btn,
+    .coffee-btn{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        /* the fluid size bottoms out at 9px on a phone, too small to read */
+        font-size: 11px;
+    }
+
+    .field input,
+    .field select{
+        min-height: 44px;
+    }
+
+    .link-remove{ min-height: 44px; }
+
+    .site-footer li a{
+        display: inline-block;
+        padding: 12px 0;
+    }
+
+    .footer-social a{
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .qty{ min-height: 44px; }
+
+    .card summary{ display: block; padding: 13px 0; }
+
+    /* keep the search pill compact while the field itself stays tappable */
+    .search-box{ padding: 2px 18px; }
+    .search-box input{ min-height: 44px; }
+    .search-hint{ left: 50px; }
+
+    /* the reel dots stay small visually but get a finger-sized hit area */
+    .dot{ position: relative; }
+
+    .dot::after{
+        content: "";
+        position: absolute;
+        inset: -18px;
+    }
+
+    .slide-nav{ width: 46px; height: 46px; }
+
+    /* ---- pictures need not be full-width squares on a phone: this alone
+           takes roughly 145px off every product card ---- */
+    .card{ padding: 16px; }
+
+    .grid-3 .card-art{ aspect-ratio: auto; }
+
+    .card-art img{
+        max-height: 150px;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .pill{ padding: 18px 12px; }
+}
+
+/* ---- respect a reduced-motion preference ---- */
+@media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    /* without the reel running, show the first slide */
+    .slide:nth-child(1){ opacity: 1; visibility: visible; }
+}
+
+/* ---- print ---- */
+@media print{
+    .announce,
+    .navbar,
+    .slideshow,
+    .site-footer{ display: none; }
+
+    body{ background: #fff; color: #000; }
+}

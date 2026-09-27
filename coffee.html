@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee | Bean Boutique</title>
+    <meta name="description" content="Unique single origin coffee blends from Bean Boutique, with tasting notes, roast levels and an on-page product search.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Montserrat:ital,wght@0,300..700;1,300..600&family=Nanum+Gothic:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Elfsight Cookie Consent | Untitled Cookie Consent -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-efe0c272-638d-4604-9c49-9b061a905b93"></div>
+
+    <!-- Elfsight Back to Top | Untitled Back to Top -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-e6878463-14c1-48b3-a8f5-04a66b0112ae"></div>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announce">
+        <ul>
+            <li>Free shipping on orders over $100</li>
+            <li>Roasted every Tuesday</li>
+            <li>Open 7&ndash;18 daily</li>
+        </ul>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="nav-header">
+            <a href="coffee.html" class="search">Search</a>
+            <a href="index.html" class="logo">BEAN BOUTIQUE</a>
+            <a href="cart.html" class="cart">Cart<span class="cart-count" hidden>0</span></a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" aria-label="Main">
+        <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coffee.html" aria-current="page">Coffee</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="offers.html">Offers</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+
+    <header class="page-head">
+        <div class="wrap">
+            <p class="eyebrow">The shelf</p>
+            <h1>Unique <span class="accent">blends</span></h1>
+            <p class="lede">Six lots on the shelf right now. Start typing to search
+               the catalogue by name, origin, roast or tasting note.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="wrap">
+
+            <h2 class="visually-hidden">Coffee catalogue</h2>
+
+            <div class="search-tool">
+                <label class="visually-hidden" for="site-search">Search the coffee catalogue</label>
+                <div class="search-box">
+                    <img class="search-icon" src="images/icon-search.png" alt="">
+                    <input type="search" id="site-search" placeholder=" " autocomplete="off">
+                    <span class="search-hint" aria-hidden="true">
+                        <span class="search-words">
+                    <span class="hint-1">ethiopia</span>
+                    <span class="hint-2">dark roast</span>
+                    <span class="hint-3">chocolate</span>
+                        </span>
+                        <span class="search-caret"></span>
+                    </span>
+                </div>
+                <p class="search-count" id="search-count" role="status" aria-live="polite"></p>
+            </div>
+
+            <div class="grid grid-3">
+                <article class="card" data-search="House Blend Brazil &amp; Colombia Balanced and easy, our everyday cup. Toasted almond, milk chocolate, soft citrus. Medium coffee beans blend">
+                    <div class="card-art">
+                        <img src="images/bag-yellow.jpg" alt="A bag of House Blend coffee">
+                    </div>
+                    <span class="card-tag">Medium roast</span>
+                    <h3>House Blend</h3>
+                    <p><strong>Brazil &amp; Colombia.</strong> Balanced and easy, our everyday cup. Toasted almond, milk chocolate, soft citrus.</p>
+                    <div class="card-foot">
+                        <span class="price">$14.00 / 250g</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="house" data-name="House Blend"
+                                data-price="14.00" data-img="images/bag-yellow.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Midnight Ethiopia Yirgacheffe Blueberry, dark cocoa and a jasmine finish. Our most floral lot. Light coffee beans blend">
+                    <div class="card-art">
+                        <img src="images/bag-purple.jpg" alt="A bag of Midnight Ethiopia coffee">
+                    </div>
+                    <span class="card-tag">Light roast</span>
+                    <h3>Midnight Ethiopia</h3>
+                    <p><strong>Yirgacheffe.</strong> Blueberry, dark cocoa and a jasmine finish. Our most floral lot.</p>
+                    <div class="card-foot">
+                        <span class="price">$18.50 / 250g</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="ethiopia" data-name="Midnight Ethiopia"
+                                data-price="18.50" data-img="images/bag-purple.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Colombia Sunrise Huila Red apple and cane sugar with a clean, syrupy body. Medium coffee beans blend">
+                    <div class="card-art">
+                        <img src="images/bag-orange.jpg" alt="A bag of Colombia Sunrise coffee">
+                    </div>
+                    <span class="card-tag">Medium roast</span>
+                    <h3>Colombia Sunrise</h3>
+                    <p><strong>Huila.</strong> Red apple and cane sugar with a clean, syrupy body.</p>
+                    <div class="card-foot">
+                        <span class="price">$16.00 / 250g</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="colombia" data-name="Colombia Sunrise"
+                                data-price="16.00" data-img="images/bag-orange.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Sumatra Dusk Aceh Earthy and full, with cedar, dried fig and a long finish. Dark coffee beans blend">
+                    <div class="card-art">
+                        <img src="images/bag-blue.jpg" alt="A bag of Sumatra Dusk coffee">
+                    </div>
+                    <span class="card-tag">Dark roast</span>
+                    <h3>Sumatra Dusk</h3>
+                    <p><strong>Aceh.</strong> Earthy and full, with cedar, dried fig and a long finish.</p>
+                    <div class="card-foot">
+                        <span class="price">$17.00 / 250g</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="sumatra" data-name="Sumatra Dusk"
+                                data-price="17.00" data-img="images/bag-blue.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Quiet Hours Decaf, Colombia Sugarcane decaffeinated. Cherry and cocoa, none of the buzz. Medium coffee beans blend">
+                    <div class="card-art">
+                        <img src="images/bag-pink.jpg" alt="A bag of Quiet Hours coffee">
+                    </div>
+                    <span class="card-tag">Medium roast</span>
+                    <h3>Quiet Hours</h3>
+                    <p><strong>Decaf, Colombia.</strong> Sugarcane decaffeinated. Cherry and cocoa, none of the buzz.</p>
+                    <div class="card-foot">
+                        <span class="price">$15.50 / 250g</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="decaf" data-name="Quiet Hours"
+                                data-price="15.50" data-img="images/bag-pink.jpg">Add to basket</button>
+                    </div>
+                </article>
+
+                <article class="card" data-search="Espresso Roast Blend Built for the machine. Thick crema, cocoa, a dark cherry edge. Dark coffee beans blend">
+                    <div class="card-art">
+                        <img src="images/bag-green.jpg" alt="A bag of Espresso Roast coffee">
+                    </div>
+                    <span class="card-tag">Dark roast</span>
+                    <h3>Espresso Roast</h3>
+                    <p><strong>Blend.</strong> Built for the machine. Thick crema, cocoa, a dark cherry edge.</p>
+                    <div class="card-foot">
+                        <span class="price">$16.50 / 250g</span>
+                        <button class="btn btn-small" type="button"
+                                data-add data-id="espresso" data-name="Espresso Roast"
+                                data-price="16.50" data-img="images/bag-green.jpg">Add to basket</button>
+                    </div>
+                </article>
+            </div>
+
+            <p class="search-empty" id="search-empty" hidden>
+                No blends match that search. Try &ldquo;light&rdquo;, &ldquo;cocoa&rdquo; or &ldquo;Colombia&rdquo;.
+            </p>
+        </div>
+    </section>
+
+    <section class="split">
+        <div class="split-art">
+            <img src="images/mug-character.png" alt="The Bean Boutique character holding a mug of coffee">
+        </div>
+        <div class="split-text">
+            <p class="eyebrow">Grind</p>
+            <h2>Ground to <span class="accent">your</span> brewer.</h2>
+            <p class="lede">Tell us what you brew on at checkout and we will grind
+               to match, free of charge. Whole bean keeps longest, so that is what
+               we send unless you say otherwise.</p>
+            <a class="btn" href="equipment.html">See brewing equipment</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <span class="logo">BEAN BOUTIQUE</span>
+                    <p>A small roastery and coffee bar. Single origin beans,
+                       roasted in eight kilo batches, poured with care.</p>
+                    <div class="footer-social">
+                        <a href="#">Instagram</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Pinterest</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a href="coffee.html">Coffee</a></li>
+                        <li><a href="equipment.html">Equipment</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="cart.html">Basket</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Visit</h2>
+                    <ul>
+                        <li>Yangon</li>
+                        <li>Myanmar</li>
+                        <li>Open 7&ndash;18 daily</li>
+                        <li><a href="event.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:vv4mp6re@gmail.com">vv4mp6re@gmail.com</a></li>
+                        <li><a href="tel:+1122334455">+1 122 334 455</a></li>
+                        <li><a href="event.html">Book a workshop</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-base">
+                <span>&copy; 2026 Bean Boutique</span>
+                <span>Roasted in Yangon &middot; Brewed everywhere</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

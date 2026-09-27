@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Basket | Bean Boutique</title>
+    <meta name="description" content="Your Bean Boutique shopping basket. Review the coffee and equipment you have added before checking out.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Montserrat:ital,wght@0,300..700;1,300..600&family=Nanum+Gothic:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announce">
+        <ul>
+            <li>Free shipping on orders over $100</li>
+            <li>Roasted every Tuesday</li>
+            <li>Open 7&ndash;18 daily</li>
+        </ul>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="nav-header">
+            <a href="coffee.html" class="search">Search</a>
+            <a href="index.html" class="logo">BEAN BOUTIQUE</a>
+            <a href="cart.html" class="cart">Cart<span class="cart-count" hidden>0</span></a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" aria-label="Main">
+        <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coffee.html">Coffee</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="offers.html">Offers</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+
+    <header class="page-head">
+        <div class="wrap">
+            <p class="eyebrow">Checkout</p>
+            <h1>Your <span class="accent">basket</span></h1>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="wrap">
+
+            <p class="cart-empty" id="cart-empty" hidden>
+                Your basket is empty.<br><br>
+                <a class="btn" href="coffee.html">Start with the coffee</a>
+            </p>
+
+            <div class="cart-layout" id="cart-panel" hidden>
+
+                <table class="cart-table">
+                    <caption>Items in your basket</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col"><span class="visually-hidden">Remove</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body"></tbody>
+                </table>
+
+                <aside class="summary">
+                    <h2>Summary</h2>
+                    <div class="summary-row">
+                        <span>Subtotal</span><span id="sum-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span><span id="sum-delivery">Free</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span><span id="sum-total">$0.00</span>
+                    </div>
+                    <p class="form-note">Free delivery on orders over $100.
+                       Roasted and dispatched every Tuesday.</p>
+                    <button class="btn" type="button" id="checkout">Checkout</button>
+                    <p class="form-note">
+                        <a href="offers.html">Or save with a subscription</a>
+                    </p>
+                </aside>
+
+            </div>
+
+            <div class="cart-done" id="checkout-done" tabindex="-1" hidden>
+                <h2>Thank you for your order</h2>
+                <p>We have your basket. We will email you to confirm the details
+                   and arrange payment before anything is roasted.</p>
+                <p class="form-note">Bean Boutique does not take card payments on
+                   this site, so nothing has been charged.</p>
+                <a class="btn" href="coffee.html">Back to the coffee</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <span class="logo">BEAN BOUTIQUE</span>
+                    <p>A small roastery and coffee bar. Single origin beans,
+                       roasted in eight kilo batches, poured with care.</p>
+                    <div class="footer-social">
+                        <a href="#">Instagram</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Pinterest</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a href="coffee.html">Coffee</a></li>
+                        <li><a href="equipment.html">Equipment</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="cart.html">Basket</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Visit</h2>
+                    <ul>
+                        <li>Yangon</li>
+                        <li>Myanmar</li>
+                        <li>Open 7&ndash;18 daily</li>
+                        <li><a href="event.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:vv4mp6re@gmail.com">vv4mp6re@gmail.com</a></li>
+                        <li><a href="tel:+1122334455">+1 122 334 455</a></li>
+                        <li><a href="event.html">Book a workshop</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-base">
+                <span>&copy; 2026 Bean Boutique</span>
+                <span>Roasted in Yangon &middot; Brewed everywhere</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

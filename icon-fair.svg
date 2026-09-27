@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Fair pricing">
+  <g fill="none" stroke="#664848" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 30 C12 26 18 26 22 29 L28 33"/>
+    <path d="M22 29 H30 C32 29 33 31 33 32 C33 34 32 35 30 35 H24"/>
+    <path d="M30 32 L40 26 C42 25 44 26 44 28 C44 30 36 40 30 41 L18 41 L8 36"/>
+    <path d="M24 8 C21 4 15 5 15 10 C15 14 20 17 24 20 C28 17 33 14 33 10 C33 5 27 4 24 8Z"/>
+  </g>
+</svg>
